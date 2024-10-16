@@ -1,0 +1,20 @@
+Feature Selection
+
+- filtering 방법 
+    - 타겟/종속변수에 관련성이 높은 피쳐/독립변수 선택
+    - 상관계수 
+    - 몇 개 고를지 선정 -> 점진적으로 늘려가기
+
+- wrapper 방법 
+    - forward 방식 : 기준에 따라 k개 피쳐 선택 -> 성능 평가 -> 피쳐 추가 
+        - 연관성이 높은 피쳐를 추가  
+        - 성능 좋아질 때 까지 반복 
+            - 시간 소모 많음 
+    - backward 방식 : 모든 피쳐 선택 -> 성능 평가 -> 피쳐 제거
+        - 연관성이 낮은 피쳐 제거 
+
+    - step-wide 방식 : forward + backward
+
+- embedding 방법 
+    - 모델 내부에 피쳐 선택 기능 포함된 것 -> important feature, 주성분 분석(PCA)
+    - feature 뽑는 모델은 아니고 지도학습 모델 

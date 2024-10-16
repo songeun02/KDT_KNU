@@ -1,0 +1,9 @@
+2진 분류기 5개
+1번째 2진 분류기 -> 양성/True에 대한 확률값 뽑음 (decision_functions) --> 확률 
+2번째 2진 분류기 -> 양성/True에 대한 확률값 뽑음 (decision_functions) --> 확률 
+3번째 2진 분류기 -> 양성/True에 대한 확률값 뽑음 (decision_functions) --> 확률 
+4번째 2진 분류기 -> 양성/True에 대한 확률값 뽑음 (decision_functions) --> 확률 
+5번째 2진 분류기 -> 양성/True에 대한 확률값 뽑음 (decision_functions) --> 확률 
+
+=> 다 더하면 1.0이 되도록 다시 계산 필요 
+=> 소프트 맥스   

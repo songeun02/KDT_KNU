@@ -1,0 +1,29 @@
+Encoder 
+- LabelEncoder -> 0, 1, .....            1D : y, target
+- OrdinalEncoder -> 0, 1, ......         2D 
+- OneHotEncoder -> 1이 하나인 패턴        2D
+
+
+
+---------------------------------------------------------------
+
+KNN
+
+Linear-model : LinearRegression => 다중, 다항, 로지스틱
+    -> 다항 : 곡선, 다중 : feature 여러개
+    -> 과대적합 -> 모델 직접 제어 즉, 규제 alpha 매개변수 0~강하게
+        : 릿지(영향력 적은 feature를 0에 가깝도록 계수 설정), 라쏘 (영향력 적은 feature를 0으로 계수 설정)
+    -> 분류 --> 선형식 결과 --> 확률값으로 로지스틱 회귀 
+        - 확률값에 로그를 취한 것을 logit으로 함 
+        - OVR / OVA : 2진 분류기 여러개, feature 개수 만큼 분류기 생성 
+        - OVO : 2진 분류기 여러개 , n*(n-1) / 2 개 만큼 분류기 생성 
+
+Tree-model : DecisionTree(CART) => 회귀/분류 : 범주형/수치형
+    - 하이퍼 파라미터 많음
+    - 성능이 좋지 않지만 여러개 모으면 성능이 좋음
+        - 여러개 -> 앙상블
+        
+Ensemble-model : Voting, Bagging -> RandomForest => 회귀/분류
+
+
+* 데이터 전처리에 비지도학습(군집화, 등) 사용  
