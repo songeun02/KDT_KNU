@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 태그</title>
+</head>
+<body>
+    <h3>textarea 태그 사용법</h3>
+    <hr>
+
+    <form>
+        <fieldset>
+            <legend>블로그 글쓰기</legend>
+            <!-- <br>을 사용해서 줄바꿈을 해줘도 되지만 각 문단별로 구분해주는 <p> 사용해도 ㅇ -->
+            <p>
+                <label>제목 </label>
+                <input type = "text" minlength="3" maxlength="10" name = "title" placeholder="가을비" autofocus="True"> 
+                <!-- 
+                autofocus="True" : 마우스 커서가 해당 위치로 감 
+                -->
+            </p>
+            
+            <!-- 
+            placeholder : 입력창에 입력란에 대한 힌트처럼 보여주는 글자 
+            minlength : 최소 길이 
+            maxlength : 최대 길이
+            -->
+
+            <p>
+                <label>내용 </label>
+                <input type = "textarea" nzame = "message" placeholder="내용을 입력하세요.">
+
+                <!-- 위의 textarea 처럼 사용해도 ㅇ-->
+                <br>
+                <textarea name = "message" placeholder="내용을 입력하세요. 2" rows = "10" cols="50"></textarea>
+                
+            </p>
+        </fieldset>
+
+        <!-- 아무것도 입력 안 한 상태에서 저장 누르면 key값이 없이 전송됨 -->
+        <input type = "submit" value = "저장">
+    </form>
+    
+    
+</body>
+</html>

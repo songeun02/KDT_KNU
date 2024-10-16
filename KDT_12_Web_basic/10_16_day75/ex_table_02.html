@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table 태그</title>
+
+    <!-- 내부 CSS 설정 (간격 설정) -->
+    <style>
+        body {
+            margin : 50px;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Table 태그</h3>Good Luck
+    <!-- 
+    <br> 안 넣으면 옆에 붙어야 하는데 <h> 가 한 줄을 다 쓰므로 밑으로 내려감 
+        - 붙이기 위해서는 강제로 설정값 줘야 함 
+    -->
+
+    <!-- 상품 목록 테이블 -->
+    Good Luck<table border="1">
+    <!-- tablel 앞에 적어도 붙지 않고 다음 줄에 table 출력 -->
+        <tr>
+            <th>번호</th>
+            <th>상품명</th>
+            <th>수량</th>
+            <th>가격</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>사과</td>
+            <td>10</td>
+            <td>10000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>오렌지주스</td>
+            <!-- 2개 병합-->
+            <td rowspan="2">1</td>
+            <td rowspan="2">1300</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>포도주스</td>
+            <!-- 병합 됐으므로 기존에 작성한 데이터는 삭제 -->
+            
+        </tr>
+        <tr>
+            <td colspan="3">총합</td>
+            <!-- 3개 병합-->
+            <td>12600</td>
+    
+        </tr>
+    </table>
+</body>
+</html>                                                                                                                                                                                                                                                                                                

@@ -1,0 +1,21 @@
+
+p{
+    background-color: rgba(0,204,255,0.785);
+}
+
+#secondP {
+    
+    background-color: greenyellow;
+    color : blue;
+    font-weight: bold;
+}
+
+body {
+    align-content: center;
+    background-image: url(../../10_14/감자.png);
+}
+
+.mon {
+    background-color: pink;
+}
+    

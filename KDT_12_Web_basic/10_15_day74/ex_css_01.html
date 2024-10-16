@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS & SELECTOR</title>
+    <!-- HTML 태그를 예쁘게 스타일링 해주는 역할 CSS -->
+
+    <!-- 선택자 {속성:값; 속성:값}-->
+    <!-- 
+    #secondP : id 선택자 
+    .mom : 클래스 선택자 
+    -->
+    <style>
+        p{
+            background-color: rgba(0,204,255,0.785);
+        }
+
+        #secondP {
+            
+            background-color: greenyellow;
+            color : blue;
+            font-weight: bold;
+        }
+
+        body {
+            align-content: center;
+            background-image: url(../10_14/감자.png);
+        }
+
+        .mon {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>CSS 스타일 적용</h3>
+    <!-- HTML 태그를 예쁘게 스타일링 해주는 역할 CSS -->
+    <p>
+        오늘은 화요일 입니다.<br>
+        비오는 화요일 입니다.<br>
+        비오는 가을입니다.
+    </p> 
+
+    <!-- 아이디 지정한 곳에만 해당 속성 설정 -->
+    <p id = "secondP">내일은 수요일 입니다.</p> 
+
+    
+    <!-- 클래스 지정한 곳에만 해당 속성 설정 -->
+    <p class = "mon">어제는 월요일이었습니다.</p>
+
+    <p class = "mon">어제는 월요일이었습니다.</p>
+    
+    <p class = "mon">어제는 월요일이었습니다.</p>
+</body>
+</html>

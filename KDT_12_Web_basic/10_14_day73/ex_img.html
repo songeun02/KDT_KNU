@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id = "start_h1">이미지 태그 img</h1>
+    <!--img 태그 : 이미지를 브라우저 화면에 출력해주는 태그-->
+    <!--src 속성 : 브라우저 화면에 보여줄 이미지 링크 . 경로 -->
+    <img src = "감자.png" width="100" height="100"></img>  
+    <img src = "../10_14/감자.png" alt="존재하지 않는 이미지" width="100" height="100"></img>
+    <img src = "../10_14/images/감자1.png" alt="존재하지 않는 이미지" width="100" height="100"></img>
+
+    <!-- alt : 경로에 나타내고 싶은 이미지가 없을 때 나타내고 싶은 메시지
+                또는 이미지 설명  
+            - 사진 경로 잘못 설정하고 alt 지정 안 하면 이미지 찾을 수 없을 경우 빈 공백 생김 
+    -->
+
+    <!-- 이미지와 링크 -->
+    <!-- 설정된 이미지 누르면 설정한 사이트로 이동 -->
+    <br>
+    <a href = "https://www.naver.com/" target="_blank">
+        <img src="../10_14/images/photo.gif" style="width:300px; height: 300px;">
+        <!-- 
+        width = "", height = "" 로 지정하는 것은 속성 
+        style = "width : ; height : ;"는 style
+        -->
+    </a>
+
+    <!-- 이미지와 HTML 링크 -->
+    <!-- html 파일 링크를 걸었기 때문에 새 탭에서 열어줌  -->
+    <br>
+    <a href = "./ex_list.html" target="_blank">
+        <img src="../10_14/images/감자1.png" style="width: 100px; height: 100px;">
+    </a>
+
+    <!-- 페이지의 처음으로 이동 링크 설정 즉, 내부 페이지 이동 -->
+    <!-- 설정한 이미지 누르면 웹 맨 위로 이동  -->
+    <br>
+    <!-- href = "#id속성"-->
+    <a href="#start_h1"> <!--id가 있는 곳으로 감-->
+        <img src="../10_14/images/up.png" style="width: 100px; height: 100px;">
+    </a>
+</body>
+</html>

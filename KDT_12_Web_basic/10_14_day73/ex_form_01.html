@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 태그</title>
+</head>
+<body>
+    <h1>사용자 입력 Form 태그</h1>
+    <hr> <!-- 구분선 그림 -->
+    <form>
+        텍스트 <input type="text" name="msg" value="없음"><br>
+        <!-- 비밀번호 <input type="text" name="pass" vlaue="없음"><br> -->
+        비밀번호 <input type="password" name="pass" value="없음"><br>
+        <!-- type = "password"면 입력해도 ** 이렇게 입력됨  -->
+        전화번호 <input type = "tel" name = "phone" value = "없음"><br>
+        숫자 데이터 <input type="number" name = "nums" value = "0"><br>
+        웹 url <input type = "url" name = "url" value = "0"><br>
+        이메일 <input type="email" name = "email" value = "0"><br>
+
+        <input type = "submit" value = "전송">
+        <!-- type : submit 
+            - open tag 와 close tag 사이 입력된 정보를 주소 형식으로 저장하고 입력된 내용 초기화 
+        -->
+
+        <!--
+        GET 방식으로 서버에 입력 데이터 저장 
+        file:///C:/Users/KDP-35/Desktop/KDT_KNU/12_web_basic/10_14/ex_form_01.html?msg=%EB%82%A0%EC%94%A8%EA%B0%80+%EC%A2%8B%EB%8B%A4+&pass=1234&phone=010-1234-1234&nums=7&url=http%3A%2F%2Fwww.namver.com&email=lse%40naver.com'
+
+        -->
+    </form>
+    
+    <br>
+    <form>
+        체크박스 <input type = "checkbox" name = "options"><br>
+        <input type="submit" value="전송">
+    </form>
+
+    <br>
+    <form>
+        <strong>프로그래밍 가능한 언어 선택</strong><br>
+        Python <input type="checkbox" value="Python">><br>
+        HTML <input type="checkbox" value="HTML"> <br>
+        My_sql <input type="checkbox" value="My_sql"> <br><br>
+
+        <strong>성별 </strong><br>
+        남 <input type="radio" value="gender">
+        여 <input type="radio" value="gender">
+        <input type="submit" value="전송">
+
+        <br><br>
+        <strong>연령대 </strong><br>
+        10대 <input type="radio" name="age" value="10"><br>
+        20대 <input type="radio" name="age" value="20"><br>
+        30대 <input type="radio" name="age" value="30"><br>
+        40대 <input type="radio" name="age" value="40"><br>
+        <input type="submit" value="전송">
+
+        <!-- 
+        checkbox : 중복 선택 가능 (여러개 선택 가능)
+        radio : 여러개 버튼 중 하나만 선택 가능  
+            - name을 동일하게 맞춰야지 하나만 선택 가능!!  ex) 성별 
+                - name을 다르게 하면 여러개 선택 ㅇ 
+                    - 남 <input type="radio" name="m">
+                    - 여 <input type="radio" name="f">
+                        => name이 달라서 모두 선택 ㅇ 
+            - radio는 선택해서 전송하면 체크된 것으로만 on 으로 전송되므로 value를 넣어줘야 함 
+        -->
+
+        <!--
+        checkbox는 선택 여부에 따라 서버에 값을 알려줄 수 있지만 radio는 value를 넣어줘서 선택했는 것을 서버에 알려줘야 함 
+        -->
+    </form>
+
+    <form>
+        <!-- 버튼 태그 -->
+        저장하시겠습니까 ? <input type="button" name = "okbtn" value="확인"> <br>
+        <!-- 버튼위에 올라갈 글자는 value에 작성 -->
+
+        <!-- 색상 입력 태그 -->
+        배경색 : <input type="color" name = "bgcolor"><br>
+        <!-- bgcolor로 선택한 색상 저장됨 -->
+
+        <!-- 날짜 요일 입력 태그-->
+        생년월일 : <input type="date" name ="birthday"><br>
+
+        <input type="submit" value="전송">
+    </form>
+    
+    <from>
+        <!-- 
+        라벨을 왜 사용했는지 명시
+            - label for = "" 
+                - 특히 메시지2의 경우처럼 input이 label tag에 들어있지 않다면 반드시 작성해야 함 
+        -->
+
+        <!-- 1) 암묵적/묵시적 방식-->
+        <label for="msg1"> 
+            메시지 : <input type = "text" id = "msg1"><br> 
+        </label>
+
+        <!-- 2) 명시적 방식 -->
+        <label for="msg2">메시지2</label> <input type="text" id = "msg2"><br> 
+
+        <!-- 3) 암묵적 / 묵시적 방식 + 명시적 방식 -->
+        <label for ="msg3">
+            메시지3 : <input type="text" id ="msg3"> <br> 
+        </label>
+
+        <input type="submit" value="전송">
+    </from>
+</body>
+</html>

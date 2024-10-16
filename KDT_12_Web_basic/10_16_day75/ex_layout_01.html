@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS & TAG</title>
+    <!-- 내부 CSS 설정 -->
+    <!-- 끝나는 부분에 clear : both; 해서 float 속성 중지 -->
+    <!-- float : 또는 display : inline-block 사용 -->
+    <!--
+    <style>
+        #header{ background-color: antiquewhite; }
+        #menu {background-color: yellowgreen; float: left;}
+        #center{background-color: aqua; float: center;}
+        #side{ background-color: blueviolet; float: right;}
+        #footer{background-color: burlywood; clear:both;}
+    </style>
+    -->
+    <style>
+        #header{ background-color: antiquewhite; }
+        #menu {background-color: yellowgreen; display: inline-block;}
+        #center{background-color: aqua; display: inline-block;}
+        #side{ background-color: blueviolet; display: inline-block;}
+        #footer{background-color: burlywood; clear:both;}
+    </style>
+</head>
+<body>
+    <div id = "header">HEADER</div>
+    <div id = "menu">MENU</div>
+    <div id="center">CENTER</div>
+    <div id = "side">SIDE</div>
+    <div id = "footer">FOOTER</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS & TAG</title>
+    <!-- 내부 CSS 설정 -->
+    <!-- 
+    내용이 style 간격 안에 다 넣을 수 없다면 맞춰서 다음줄로 자동으로 내려감 (overflow)
+    => overflow : auto; 하면 박스를 텍스트에 맞춰서 변경 
+    => resize : both; 하면 박스를 마우스로 크기 조정 ㅇ 
+    -->
+    <style>
+        div{
+            background-color: darkkhaki;
+            width: 30%;
+            overflow: auto;
+            resize: both;
+        }
+    </style>
+</head>
+<body>
+    <h3>div 태그</h3>
+    <div>
+        Good Luck! Happy Birthday~!
+        <div style="background-color: cyan;"> 
+            <!-- 가장 가까이에 있는 설정으로 적용                                                -->
+            쉬는시간~!~!
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TABLE 태그</title>
+</head>
+<body>
+    <h3>Table 태그 관련</h3>
+    <caption>학생정보</caption>
+    <table border="1">
+        <!-- border="1" : 행 프레임 생성 -->
+        <tr> 
+            <caption>학생정보</caption>
+            <!-- <caption>학생정보</caption> : <tr> 안에 생성하면 첫 번째 줄에 입력하므로 병합해서 중앙 배열-->
+            <th>번호</th>
+            <th>이름</th>
+            <th>전공</th>
+            <!-- <th> 대신 <th> 사용해서 제목임을 알림 (글자 진하게) -->
+        </tr>
+        <tr>
+            <td style = "font-weight:bold;">번호</td>
+            <!-- <th> 사용 안 하면 하나씩 style로 글자 진하게 지정 필요 => <th> 주로 사용 -->
+            <td>이름</td>
+            <td>전공</td>
+        </tr>
+        
+        <tr>
+            <td>1</td>
+            <td>마징가</td>
+            <td>전투</td>
+        </tr>
+    </table>
+</body>
+</html>

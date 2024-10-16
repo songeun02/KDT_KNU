@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table 태그</title>
+</head>
+<body>
+    <h3>Table 태그</h3>
+    <!-- 상품 목록 테이블 -->
+
+    <table border="1">
+        <tr>
+            <th>번호</th>
+            <th>상품명</th>
+            <th>수량</th>
+            <th>가격</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>사과</td>
+            <td>10</td>
+            <td>10000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>오렌지주스</td>
+            <!-- 2개 병합-->
+            <td rowspan="2">1</td>
+            <td rowspan="2">1300</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>포도주스</td>
+            <!-- 병합 됐으므로 기존에 작성한 데이터는 삭제 -->
+            
+        </tr>
+        <tr>
+            <td colspan="3">총합</td>
+            <!-- 3개 병합-->
+            <td>12600</td>
+    
+        </tr>
+    </table>
+</body>
+</html>                                                                                                                                                                                                                                                                                                

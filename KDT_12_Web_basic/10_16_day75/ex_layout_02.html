@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- viewport 가 최종 부모-->
+    <title>CSS & TAG</title>
+    <!-- 내부 CSS 설정 -->
+    <!-- 끝나는 부분에 clear : both; 해서 float 속성 중지 -->
+    <!-- float : 또는 display : inline-block 사용 -->
+    <!--
+    <style>
+        #header{ background-color: antiquewhite; }
+        #menu {background-color: yellowgreen; float: left;}
+        #center{background-color: aqua; float: center;}
+        #side{ background-color: blueviolet; float: right;}
+        #footer{background-color: burlywood; clear:both;}
+    </style>
+    -->
+
+    <!-- * {text-align: center;} : 모든 것을 중앙 정렬 -->
+    <!-- # : id / header, nav 등 : 태그명 -->
+    <!-- display : inline-block; 과 float 둘 중 하나만 사용 -->
+    <!-- viewport에 따라 보여주므로 단위를 vh(viewport height), vw(viewport weight) -->
+    <style>
+        * {text-align: center;}
+        html{ height: 100%;}
+        body { height: 100vh; width: 100vw;}
+        #header, header{ background-color: antiquewhite; height: 15vh; }
+        #menu, nav {background-color: yellowgreen; width: 20vw; float:left; height: 80vh;}
+        #center, section{background-color: aqua; display: inline-block; width : 60vw; height: 80vh}
+        #side, aside{ background-color: blueviolet; width:20vw; float : right; height: 80vh;}
+        #footer, footer{background-color: burlywood; clear:both;}
+    </style>
+</head>
+<body>
+    <!-- <div id = "header">HEADER</div>
+    <div id = "menu">MENU</div>
+    <div id="center">CENTER</div>
+    <div id = "side">SIDE</div>
+    <div id = "footer">FOOTER</div> -->
+    <header>
+        <h1>MY PROJECT DEMO</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#ml">머신러닝</a></li>
+            <li><a href="#dl">딥러닝</a></li>
+            <li><a href="#cv">openCV</a></li>
+            <li><a href="#nlp">자연어</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div id="ml">
+            머신러닝
+        </div>
+        <div id="dl">
+            딥러닝
+        </div>
+        <div id="cv">
+            openCV
+        </div>
+        <div id="nlp">
+            자연어
+        </div>
+    </section>
+    <aside>SIDE</aside>
+    <footer>FOOTER</footer>
+</body>
+</html>
