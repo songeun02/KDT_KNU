@@ -1,0 +1,20 @@
+pytorch는 모델에 데이터를 넣을 때는 batch_size를 가장 먼저 앞에 나옵니다. 
+ 
+하지만 RNN이나 LSTM 같은 경우는 batch_size가 아닌 sequence가 가장 먼저 나옵니다.
+ 
+input : [sequence, batch_size, input_size]
+ 
+model에서 나오는 output 또한 sequence가 가장 먼저 나옵니다.
+ 
+output : [sequence, batch_size, hidden_size]
+ 
+이렇게 sequence가 가장 앞에서 사용되면 가끔 데이터 차원이 헷갈립니다. 
+ 
+그럴 때 사용하는 것이 batch_first=True 입니다. default는 False입니다.
+ 
+batch_first를 True로 설정하면 batch_size가 제일 먼저 앞으로 이동합니다. 
+ 
+input : [batch_size, sequence, input_size]
+   
+output : [batch_size, sequence, hidden_size]
+출처: https://coding-yoon.tistory.com/55 [Embeded-Korea:티스토리]

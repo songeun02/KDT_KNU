@@ -1,0 +1,8 @@
+CNN : 특징 뽑음 
+
+- feature 뽑음 
+- FM
+- CNN
+- FM
+- 학습
+- NN 
