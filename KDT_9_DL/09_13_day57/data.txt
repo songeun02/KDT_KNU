@@ -1,0 +1,29 @@
+[IRIS]
+feature : 3개 - sepal_length, sepal_width, petal_width
+target : 1개 - petal_Length 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[IRIS]
+feature : 4개 
+target : 1개 
+class : 품종 3개 <- 고유값 
+
+----------------------------------------
+
+[IRIS]
+feature : 4개 
+target : 1개 
+class : 품종 2개만 선택 (setosa와 나머지)
+
+----------------------------------------
+
+[mnist-digit]
+feature : 64개 
+target : 1개 
+class : 0 ~ 9 10개 <- 고유값 
+
+[mnist-fashion]
+feature : 784개
+target : 1개 
+class : 0 ~ 9 10개 <- 고유값 

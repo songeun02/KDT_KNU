@@ -1,0 +1,17 @@
+scikit-learn
+1] train_test_split()
+2] train/train_test_split
+3] fit(train)
+
+pytorch 
+1] 데이터 준비
+2] 모델 선언 및 초기화 
+3] 가중치 및 절편 최적화 인스턴스 생성
+4] 학습 ==> 직접 구현(for문)
+    1) 학습
+    2) 손실 계산
+    3) 가중치 및 절편 업데이트 
+    4) 학습 과정 출력 
+
+
+    

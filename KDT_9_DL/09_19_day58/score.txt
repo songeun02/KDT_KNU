@@ -1,0 +1,7 @@
+[분류 성능 평가 지표] 
+- F1-Score
+- Accuracy 
+- Recall
+- Precision
+- confusion-matrix 
+- ROC-AUC 

@@ -1,0 +1,23 @@
+정수 int => 크기 다양 
+- byte => 8bit => 256개 -> int8/uint8
+- 부호 존재 : -128 ~ 127 ===> -2^7 ~ (2^7 -1)
+- 부호 존재 x (unsigned)(u) : 0 ~ 255 => 이미지 데이터 픽셀 색상값 
+- short => 16bit : - 215 ~ (215 -1) -> int16/uint16 ===> -2^15 ~ (2^15) -1
+- int => 32bit -> int32 / uint32 ===> -2^31 ~ (2^31 -1)
+- long int => 64bit -> int64 / uint64 - 2^64 ~ (2^64 -1)
+
+실수 float => 소수점 이하 자릿수 
+float => 7 or 8                : 4byte -> int32 but float이 소수점을 표현하므로 더 큼 
+double => float 소수점의 2배    : 8byte -> double 
+
+ex) 실수 3.12 => 정수 3, 실수 12 
+    - 쪼개서 봄
+
+기본 데이터 타입 => 숫자, 글자 => int, float, char, string, bool
+- C/C++/C#/Java ==> 스택 
+- python => 힙 (클래스 기반 객체)
+
+확장 데이터 타입 => 여러개의 기본 데이터 타입 모여서 하나의 데이터 표현 - string 
+c => 구조체 
+java외 OOP(객체지향언어) => 구조체 + 함수 => 클래스 
+- C/C++/C#/Java ==> 힙 (클래스 기반 객체)
