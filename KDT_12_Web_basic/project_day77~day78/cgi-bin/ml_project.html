@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Project</title>
+
+    <style>
+        html{height: 100px;}
+        body{height: 100vh; width:100vw;}
+        body{background-color: rgb(252, 211, 211);}
+        header{background-color: rgb(255,170,170);}
+        #section_ml{display: inline-block; background-color: rgb(252, 211, 211); height: 100vh; width: 90vw; margin-left: 4%;}
+        #title{text-align: center;}
+        #content{text-align: left; margin-left: 10%; width: 80%;}
+    </style>
+</head>
+<body id = "body">
+    <header id = "title">
+        <h1>My Project Model</h1>
+    </header>
+
+    <div id = "section_ml" style="border:5px solid rgb(255,170,170)">
+        
+        <h2 id = "title">머신러닝</h2>
+        <h3 id = "title"> [ 전복 나이 예측 ] </h3>
+        <img src="abalone_f.png" style="width: 60px;; height: 50px; margin-left: 48%;" >
+                
+        <hr>
+        <br>
+        <form id ="content" action="/cgi-bin/web_ml.py" method="POST">
+            <fieldset> 
+                <legend>전복 성별 (Sex)</legend>
+                <label>
+                    <input type = "radio" name = "gender" value = "F"> F
+                    <input type = "radio" name="gender" value="I"> I(infant)
+                    <input type = "radio" name="gender" value="M"> M
+                </label>
+       
+            </fieldset>
+
+            <br>
+            가장 긴 껍질 길이 (Length) <input type="text" name="length"><br><br>
+            껍질 길이에 수직 길이 (Diameter) <input type="text" name="diameter"><br><br>
+            살점 포함 껍질 길이 (Height) <input type="text" name="height"><br><br>
+            전체 전복 무게 (Whole Weight) <input type="text" name="whole_weight"><br><br>
+            살점 무게 (Shucked Weight) <input type="text" name="shucked_weight"><br><br>
+            내장 무게 (Viscera weight) <input type="text" name="viscera_weight"><br><br>
+            건조된 살점 무게 (Shell Weight) <input type="text" name="shell_weight"><br><br>
+
+            <input type = "submit" value = "전송">
+            
+        </form>
+        
+    </div>
+    
+</body>
+</html>
