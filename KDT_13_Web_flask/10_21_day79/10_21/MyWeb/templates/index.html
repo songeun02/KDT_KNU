@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWeb</title>
+
+    <!-- 외부 CSS 파일 설정 -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
+    <!-- 
+    href를 주기 위해서는 url_for 사용 
+
+    -->
+</head>
+<body>
+    자몽다...
+    <br>
+    <img src="{{url_for('static',filename='images/jamong.png')}}" width="50%"; height="50%">
+
+    <ul>
+        <li><a href="/info">info</a></li>
+    </ul>
+</body>
+</html>
