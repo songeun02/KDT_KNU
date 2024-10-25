@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>😊MyWeb</title>
+</head>
+<body>
+    <!-- -- table 형태 -------------------------------------------->
+    <h1>질문 게시판</h1>
+    <table border="1">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>날짜</th>
+        </tr>
+    
+        {% if question_list %}
+        
+        <!-- 반복문 사용해서 메모리 낭비 없게 함 -->
+        {% for question in question_list %}
+        <!-- Question 1개가 1개의 행 -->
+        <tr>
+            <td>{{question.id}}</td>
+            <td>
+                <a href="/qdetail/{{question.id}}"> {{question.subject}} </a>
+            </td>
+            <td>{{question.create_date}}</td>
+        </tr>
+        {% endfor %}
+
+        {% else %}
+            <tr>
+                <td class="msg" colspan="3"> 등록된 질문이 없습니다.</p>
+                <!-- 3개 칸 합침 -->
+            </tr>
+        
+        {% endif %}
+    </table>
+
+
+    <!-- -- list 형태 -------------------------------------------->
+
+    <br>
+    <hr>
+    <h1>질문 게시판</h1>
+    {% if question_list %}
+    
+    <!-- 반복문 사용해서 메모리 낭비 없게 함 -->
+    {% for question in question_list %}
+    <ol>
+        <li>{{question.subject}}</li>
+        <li>{{question.content}}</li>
+        <li>{{question.create_date}}</li>
+        <!-- models.py의 subject 속성 -->
+        <br>
+    {% endfor %}
+    </ol>
+   
+    {% else %}
+        <p id = "msg"> 등록된 질문이 없습니다.</p>
+
+    {% endif %}
+    
+</body>
+</html>

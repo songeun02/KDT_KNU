@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>😊MyWeb</title>
+</head>
+<body>
+    <h1>질문상세보기</h1>
+    <div id="question">
+        <label>제목 : </label>
+        {{question.subject}}<br><br>
+
+        <laebl>내용 : </laebl>
+        {{question.content}}<br>
+    </div>
+    <div>
+        <form action ="{{url_for('answer.create', question_id = question.id)}}" method="POST">
+            <textarea rows="5" cols="20" placeholder="답글입력" name="content" id = "content"></textarea>
+            <input type="submit" value="답변등록">
+        </form>
+    </div>
+
+    <h5>{{question.answer_set|length}}개의 답변이 있습니다.</h5>
+    <div>
+        <ul>
+            {% for answer in question.answer_set %}
+                <li>{{answer.content}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
