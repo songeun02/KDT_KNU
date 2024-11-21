@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👑3조는 하나야👑</title>
+    <style>
+        h1 { font-size: 80px; margin-bottom: 1px; }
+        body {
+            background-image: url("{{ url_for('static', filename='violet.jpg') }}");
+            text-align: center;
+            margin-top: 50px;
+            font-family: "Gamja Flower", sans-serif;
+        }
+        button {
+            background-color: #021F59;
+            color: white;
+            font-size: 30px;
+            border: none;
+            cursor: pointer;
+            width: 60%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-family: "Gamja Flower", sans-serif;
+        }
+        img {
+            max-width: 1000px;
+            max-height: 1000px;
+        }
+
+        .animated-image {
+            animation: sway 2s infinite;
+            margin: 10px;
+            filter: drop-shadow(10px 6px 6px #a2a2a2);
+        }
+
+        @keyframes sway {
+            0% {
+                transform: rotate(-20deg);
+            }
+            50% {
+                transform: rotate(20deg);
+            }
+            100% {
+                transform: rotate(-20deg);
+            }
+        }
+
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <a href="http://127.0.0.1:5000/personal/상의 분류"><img src="{{ url_for('static', filename='eun.png') }}" width="125" class="animated-image"></a>
+    <a href="http://127.0.0.1:5000/personal/하의 분류"><img src="{{ url_for('static', filename='koo2.png') }}" width="150" class="animated-image"></a>
+    <a href="http://127.0.0.1:5000/personal/신발 분류"><img src="{{ url_for('static', filename='hyun3.png') }}" width="200" class="animated-image"></a>
+    <a href="http://127.0.0.1:5000/personal/액세서리 분류"><img src="{{ url_for('static', filename='ju.png') }}" width="200" class="animated-image"></a>
+
+    <br>
+    <br>
+    <form method="POST" action="{{ url_for('index') }}" enctype="multipart/form-data">
+        <input type="file" name="image" id="image" accept="image/*" onchange="setThumbnail(event);" />
+        <div id="image_container"></div>
+
+        <script>
+            function setThumbnail(event) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    var img = document.createElement('img');
+                    img.setAttribute('src', event.target.result);
+                    img.style.maxWidth = '1000px';
+                    img.style.maxHeight = '1000px';
+                    document.querySelector('div#image_container').appendChild(img);
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        </script>
+        <br>
+        <button type="submit"> 확인하기</button>
+    </form>
+    {% if result %}
+        <h2>결과: {{ result }}</h2>
+    {% endif %}
+</body>
+</html>
