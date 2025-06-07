@@ -3,7 +3,6 @@ import os
 import cgi, cgitb  # cgi 프로그래밍 관련
 import sys, codecs # 인코딩 관련
 from joblib import load
-import pandas as pd
 import numpy as np
 
 # 동작관련 전역 변수----------------------------------

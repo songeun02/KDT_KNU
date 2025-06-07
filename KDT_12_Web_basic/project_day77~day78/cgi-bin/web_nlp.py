@@ -1,19 +1,16 @@
 import os
 import cgi, cgitb  # cgi 프로그래밍 관련
 import sys, codecs # 인코딩 관련
-import string
-from konlpy.tag import Okt
 import torch
 import torch.nn as nn
 import numpy as np 
-import joblib      # AI 모델 관련
 import pickle  # 단어 사전 저장/불러오기 관련
-from sklearn.feature_extraction.text import TfidfVectorizer  # TF-IDF 사용
-from sklearn.metrics.pairwise import cosine_similarity  # 코사인 유사도 계산
 import torch.nn.functional as F
 
 SCRIPT_MODE = True    # Jupyter Mode : False, WEB Mode : True
 cgitb.enable()         # Web상에서 진행상태 메시지를 콘솔에서 확인할수 있도록 하는 기능
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 def show_html(result):
     print("Content-Type: text/html; charset=utf-8")
@@ -31,9 +28,11 @@ def show_html(result):
             body {height: 100vh; width:100vw;}
             body {background-color: rgb(252, 211, 211);}
             header {background-color: rgb(255,170,170);}
-            #section_ml {display: inline-block; background-color: rgb(252, 211, 211); height: 85vh; width: 90vw; margin-left: 4%;}
+            #section_nlp {display: inline-block; background-color: rgb(252, 211, 211); height: 85vh; width: 90vw; margin-left: 4%;}
             #title {text-align: center;}
-            #content { text-align : center; margin-left: 26%; height: 60vh; width: 45vw;}
+            #content{ display : flex; align-items : flex-start; gap : 20px; margin-top : 7px; margin-left : 10%}
+            #result_box{flex:1; margin-top:10px}
+            #text_input{flex:1;}
         </style>
     """)
     print(f"""
@@ -43,7 +42,7 @@ def show_html(result):
             <h1>My Project Model</h1>
         </header>
 
-        <div id = "section_ml" style="border:5px solid rgb(255,170,170)">
+        <div id = "section_nlp" style="border:5px solid rgb(255,170,170)">
             
             <h2 id = "title">자연어 처리</h2>
             <h3 id = "title"> [ 낚시성 뉴스 기사 탐지 ] </h3>
@@ -53,22 +52,25 @@ def show_html(result):
             
             <br>
             <form id ="content">
-                뉴스 기사
-                <br>
-                <textarea name = "news_article" rows = "30" cols="80"></textarea>
-
-                <input type = "submit" value = "전송">
+                <div id = "text_input">
           
-                <h3>{result}</h3>
+                    뉴스 기사
+                    <br>
+                    
+                    <textarea name = "news_article" rows = "25" cols="80"></textarea>
+
+                    <input type = "submit" value = "전송">
+                </div>
+          
+                <div id = "result_box">
+          
+                    <h3>{result}</h3>
+
+                </div>
                 
             </form>
-          
-            
             
         </div>
-          
-        
-        
     
     </body>
     </html>
@@ -121,77 +123,50 @@ def load_vocab(vocab_path):
         token_to_id = pickle.load(f)
     return token_to_id
 
-# 코사인 유사도를 계산하는 함수-----------------------------------------
-def calculate_cosine_similarity(article_text, vocab_tokens):
-    # TF-IDF 벡터화
-    vectorizer = TfidfVectorizer().fit(vocab_tokens + [article_text])
-    
-    # 기사와 단어 사전을 벡터로 변환
-    article_vec = vectorizer.transform([article_text])
-    vocab_vec = vectorizer.transform(vocab_tokens)
-
-    # 코사인 유사도 계산
-    similarity = cosine_similarity(article_vec, vocab_vec)
-    
-    # 유사도의 평균값 반환
-    return np.mean(similarity)
 
 # 사용자 입력 데이터를 예측하는 함수-----------------------------------------
-def classify_article(article_text, vocab_tokens):
-    
-    # 기사와 단어 사전의 코사인 유사도 계산
-    similarity = calculate_cosine_similarity(article_text, vocab_tokens)
+def classify_article(article_text, model, vocab_tokens):
+    if not article_text.strip():
+        return "기사를 입력해주세요."
 
-    # 유사도가 60% 이상일 때 해당 주제와 관련 있다고 판단
-    if similarity >= 0.6:
-        return f"위에 작성한 기사는 IT & 과학 관련 뉴스가 맞습니다."
+    prob = predict_article_category(article_text, model, vocab_tokens)
+
+    if prob >= 0.4:
+        return f"'IT & 과학'주제의 낚시성 기사일 확률이 {prob * 100:.2f}%입니다."
     else:
-        return f"위에 작성한 기사는 IT & 과학 관련 뉴스가 아닙니다."
+        return f"'IT & 과학' 주제의 낚시성 기사가 아닐 확률이 {100 - prob * 100:.2f}%입니다."
 
 # 주제별 모델과 단어 사전 로딩 함수---------------------------------------
 def load_model_and_vocab_for_category():
 
     if SCRIPT_MODE:
-        model_path = os.path.dirname(__file__)+ '/model_nlp_news.pth' # 웹상에서는 절대경로만
-        vocab_path = os.path.dirname(__file__)+ '/vocab.pkl'
+        model_path = os.path.dirname(__file__)+ '/model_run_file/model_nlp_news.pth' # 웹상에서는 절대경로만
+        vocab_path = os.path.dirname(__file__)+ '/model_run_file/vocab.pkl'
     else:
-        model_path = '../model_nlp_news.pth'
-        vocab_path = '../vocab.pkl'
+        model_path = './model_run_file/model_nlp_news.pth'
+        vocab_path = './model_run_file/vocab.pkl'
     
 
     if model_path and os.path.exists(model_path) and vocab_path and os.path.exists(vocab_path):
         # 모델 및 단어 사전 불러오기
-        model = torch.load(model_path, map_location=torch.device('cpu'))
+        model = torch.load(model_path, map_location=device, weights_only=False)
+        model.to(device)
         token_to_id = load_vocab(vocab_path)
         return model, token_to_id
     else:
         raise FileNotFoundError(f"모델 또는 단어 사전을 찾을 수 없습니다.")
 
-def calculate_cosine_similarity(article_text, vocab_tokens):
-    # vocab_tokens가 사전일 경우, 값들만 리스트로 변환
-    if isinstance(vocab_tokens, dict):
-        vocab_tokens = list(vocab_tokens.values())  # 사전 값을 리스트로 변환
+def predict_article_category(article_text, model, token_to_id):
+    model.eval()
+    tokens = article_text.strip().split()
+    indexed = [token_to_id.get(token, token_to_id.get('<unk>', 0)) for token in tokens]
+    indexed_tensor = torch.tensor([indexed], dtype=torch.long).to(device)
 
-    # vocab_tokens 안에 정수형 값이 있을 경우, 문자열로 변환하거나 필터링
-    vocab_tokens = [str(token) for token in vocab_tokens if isinstance(token, (str, int))]  # 문자열로 변환
-    
-    # article_text가 문자열인지 확인 (보통은 문자열이어야 함)
-    if not isinstance(article_text, str):
-        raise ValueError("article_text는 문자열이어야 합니다.")
+    with torch.no_grad():
+        logits = model(indexed_tensor)
+        prob = torch.sigmoid(logits).item()  # 이진 분류일 경우 sigmoid 사용
 
-    # TF-IDF 벡터화
-    vectorizer = TfidfVectorizer().fit(vocab_tokens + [article_text])
-    
-    # 기사와 단어 사전을 벡터로 변환
-    article_vec = vectorizer.transform([article_text])
-    vocab_vec = vectorizer.transform(vocab_tokens)
-
-    # 코사인 유사도 계산
-    similarity = cosine_similarity(article_vec, vocab_vec)
-    
-    # 유사도의 평균값 반환
-    return np.mean(similarity)
-
+    return prob
 
 # (1) WEB 인코딩 설정---------------------------------
 if SCRIPT_MODE:
@@ -207,7 +182,7 @@ try:
     
     # (4) 예측 및 결과 출력
     if len(article_text)>1:
-        result = classify_article(article_text, vocab_tokens)
+        result = classify_article(article_text, model, vocab_tokens)
     else:
         result = "기사를 입력해주세요."
 
