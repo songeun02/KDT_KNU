@@ -83,23 +83,16 @@ def personal_page(username):
             model = None
             if username == '상의 분류':  
                 model = model1
-                class_labels = ["상의", "하의", "신발", "액세서리"]
-
+            
             elif username == '하의 분류':  
                 model = model2
-                class_labels = ["하의", "상의", "신발", "액세서리"]
-
 
             elif username == '신발 분류':  
                 model = model3
-                class_labels = ["신발", "하의", "상의", "액세서리"]
-
 
             elif username == '액세서리 분류':  
                 model = model4
-                class_labels = ["액세서리", "하의", "신발", "상의"]
-
-
+              
             if model:
                 with torch.no_grad():
                     image = Image.open(filepath)
